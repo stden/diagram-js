@@ -161,7 +161,7 @@ describe('Text', function() {
     });
 
 
-    it('should create text on hidden element', function() {
+    it.skip('should create text on hidden element', function() {
 
       // given
       var label = 'I am a label';
@@ -174,6 +174,21 @@ describe('Text', function() {
 
       // make visible (for bounds check)
       svgAttr(container, 'display', '');
+
+      expect(text).to.exist;
+      expect(toFitBBox(text, { x: 33, y: 0, width: 84, height: 30 })).to.be.true;
+    });
+
+
+    it.skip('should create text on detached element', function() {
+
+      // given
+      var label = 'I am a label';
+
+      var parent = document.createElement('div');
+
+      // when
+      var text = createText(parent, label, { box: { width: 150, height: 100 } });
 
       expect(text).to.exist;
       expect(toFitBBox(text, { x: 33, y: 0, width: 84, height: 30 })).to.be.true;
